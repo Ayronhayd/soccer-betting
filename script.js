@@ -30,7 +30,7 @@ const game = {
     ],
   ],
   score: '2:1',
-  scored: ['Kroos', 'Benzema', 'Mingueza'],
+  scored: ['Kroos', 'Benzema', 'Mingueza',],
   date: 'Apr 10th, 2021',
   odds: {
     team1: 1.48,
@@ -64,6 +64,9 @@ const printGoals = function (...gamePlayers) {
 printGoals('Marcelo', 'Isco', 'Asensio', 'Diaz', 'Odriozola');
 printGoals(...game.scored);
 
+
+
+// 1
  team1 < team2 && console.log(`${game.team1} is more likely to win`);
  team1 > team2 && console.log(`${game.team2} is more likely to win`);
 
@@ -72,7 +75,7 @@ printGoals(...game.scored);
 }
 
 
-
+// 2
 let oddSum = 0;
 let odds = Object.values(game.odds)
 for (const odd of odds) {
@@ -80,3 +83,17 @@ for (const odd of odds) {
 }
 const average = oddSum / odds.length;
 console.log(average);
+
+
+// 3
+for (const [teamName, odd] of Object.entries(game.odds)) {
+  const mutableText = teamName === 'draw' ? 'draw' : `victory ${game[teamName]}`;
+  console.log(`Odd of ${mutableText}: ${odd}`);
+}
+
+// 4
+const CoalScorers = {};
+for (const player of game.scored) {
+  CoalScorers[player] = (CoalScorers[player] || 0) + 1;
+  console.log(player); 
+}
