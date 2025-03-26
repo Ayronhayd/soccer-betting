@@ -40,6 +40,8 @@ const checkIn = function (flight, passenger) {
   }
 };
 
-checkIn(flightNumber, passenger1145);
-console.log(flightNumber);
-console.log(passenger1145);
+// checkIn(flightNumber, passenger1145);
+// console.log(flightNumber);
+// console.log(passenger1145);
+
+
