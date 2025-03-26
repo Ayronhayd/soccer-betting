@@ -64,8 +64,19 @@ const printGoals = function (...gamePlayers) {
 printGoals('Marcelo', 'Isco', 'Asensio', 'Diaz', 'Odriozola');
 printGoals(...game.scored);
 
-
-
-
  team1 < team2 && console.log(`${game.team1} is more likely to win`);
  team1 > team2 && console.log(`${game.team2} is more likely to win`);
+
+ for (const [index, name] of game.scored.entries()) {
+  console.log(`Goal ${index + 1}: ${name}`);
+}
+
+
+
+let oddSum = 0;
+let odds = Object.values(game.odds)
+for (const odd of odds) {
+  oddSum += odd;
+}
+const average = oddSum / odds.length;
+console.log(average);
