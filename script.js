@@ -1,32 +1,26 @@
-// функция Принимающая collback функцию
-
-const removeSpaces = function (text) {
-  return text.replace(/ /g, '').toLowerCase();
-}
-
-const upperFirstWorld = function (text) {
-  const [first, ...others] = text.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-}
-
-// функция высшего порядка
-const  converter = function (str, func) {
-  console.log(`оригинал Первый аргумент-0 ${str}`);
-  
-  console.log(`Конвертор-1: ${func(str)}`);
+const greet = function (greetingText) {
+  return function (name) {
+    console.log(`${greetingText}, ${name}`);
+  };
+};
 
 
-  console.log(`Конвертор-2: ${func.name}`);
-  
-  
-}
+ const hi = greet('hello');
 
 
-converter('Клопы тут', upperFirstWorld); 
+ hi('John'); // hello, John
+ hi('Jane'); // hello, Jane
+ hi('Doe'); // hello, Doe
 
-converter('JavaScript is awesome', removeSpaces);
 
 
-// Передача колбека в функцию 
-const twice = num => console.log(num * 2);
-[1,2,3 ].forEach(twice);
+ const arrowFunction = (greetingText) => (name) => {
+  console.log(`${greetingText}, ${name}`);
+};
+
+
+arrowFunction('John'); // hello, John
+arrowFunction('Jane'); // hello, Jane
+
+const hey = arrowFunction('hello-1');
+hey('John'); // hello-1, John
