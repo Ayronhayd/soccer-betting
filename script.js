@@ -1,47 +1,32 @@
-'use strict';
+// функция Принимающая collback функцию
 
-const bookings = [];
+const removeSpaces = function (text) {
+  return text.replace(/ /g, '').toLowerCase();
+}
 
-const makeBooking = function (
-  flightNum,
-  passengersNum = 1,
-  price = 100 * passengersNum
-) {
-  const booking = {
-    flightNum,
-    passengersNum,
-    price,
-  };
-  console.log(booking);
-  bookings.push(booking);
-};
+const upperFirstWorld = function (text) {
+  const [first, ...others] = text.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+}
 
-// makeBooking('LH123', 2, 80);
-// makeBooking('LH123', 2);
-
-// 131. 131. Передача Аргументов. Значения vs Ссылки
-
-const flightNumber = 'BV328';
-const passenger1145 = {
-  firstName: 'John',
-  lastName: 'Smith',
-  passport: 'HFD1234567',
-};
-
-const checkIn = function (flight, passenger) {
-  flight = 'bv328';
-  passenger.firstName = passenger.firstName.toLowerCase();
-  passenger.lastName = passenger.lastName.toLowerCase();
-
-  if (passenger.passport === 'HFD1234567') {
-    console.log(`Checked in ${passenger.firstName} ${passenger.lastName}`);
-  } else {
-    console.log('Wrong passport');
-  }
-};
-
-// checkIn(flightNumber, passenger1145);
-// console.log(flightNumber);
-// console.log(passenger1145);
+// функция высшего порядка
+const  converter = function (str, func) {
+  console.log(`оригинал Первый аргумент-0 ${str}`);
+  
+  console.log(`Конвертор-1: ${func(str)}`);
 
 
+  console.log(`Конвертор-2: ${func.name}`);
+  
+  
+}
+
+
+converter('Клопы тут', upperFirstWorld); 
+
+converter('JavaScript is awesome', removeSpaces);
+
+
+// Передача колбека в функцию 
+const twice = num => console.log(num * 2);
+[1,2,3 ].forEach(twice);
