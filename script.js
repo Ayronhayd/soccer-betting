@@ -1,26 +1,23 @@
-const greet = function (greetingText) {
-  return function (name) {
-    console.log(`${greetingText}, ${name}`);
-  };
-};
+const survey = {
+  question: 'Какой язык программирования вы хотели бы выучить?',
+  options: ['0: JavaScript', '1: Python', '2: Ruby', '3: Java', '4: C#'],
+  answers: new Array(5).fill(0),
 
+  logNewAnswer() {
+    // display a prompt
+    const answer = Number(prompt(`${this.question}\n${this.options.join('\n')}\n(Напишите номер ответа)`));
+    console.log(`Ваш ответ: ${answer}`);
+    
 
- const hi = greet('hello');
+    // Update answers
 
+    if (typeof answer === 'number' && answer >= 0 && answer < this.answers.length) {
+      this.answers[answer]++;
+      console.log(this.answers);
+      
+    }
+  },
+ };
 
- hi('John'); // hello, John
- hi('Jane'); // hello, Jane
- hi('Doe'); // hello, Doe
-
-
-
- const arrowFunction = (greetingText) => (name) => {
-  console.log(`${greetingText}, ${name}`);
-};
-
-
-arrowFunction('John'); // hello, John
-arrowFunction('Jane'); // hello, Jane
-
-const hey = arrowFunction('hello-1');
-hey('John'); // hello-1, John
+ survey.logNewAnswer();
+ 
