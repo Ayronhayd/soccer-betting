@@ -1,17 +1,9 @@
-// Замыкания (Closures)
-const btn = document.querySelector('.btn-country');
-
-const safeBooking = function () {
-  let passengerCount = 0; // Приватная переменная
-
-  return function () {
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
-  };
-}
-
-const booker = safeBooking(); // Создаем экземпляр функции
-
-btn.addEventListener('click', function () {
-  booker(); // Вызываем замыкание
-});
+(function () {
+  const h1 = document.querySelector('h1');
+  h1.style.color = 'orange';
+  
+  document.querySelector('body').addEventListener('click', function() { 
+   h1.style.color = 'blue';
+  });
+ })();
+ 
