@@ -1,17 +1,17 @@
-// (IIFE) Immediately Invoked Function Expression
+// Замыкания (Closures)
+const btn = document.querySelector('.btn-country');
 
-// const runOneTime = function () {
-//   console.log("вы больше никогда не увидите вызов этой функции 0");
-// }
+const safeBooking = function () {
+  let passengerCount = 0; // Приватная переменная
 
-// runOneTime();
-// runOneTime();
-
-(function () {
-  console.log("вы больше никогда не увидите вызов этой функции 1");
-})();
-
-( () => {
-  console.log("вы больше никогда не увидите вызов этой стрелочной функции 2");
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
 }
-)();
+
+const booker = safeBooking(); // Создаем экземпляр функции
+
+btn.addEventListener('click', function () {
+  booker(); // Вызываем замыкание
+});
